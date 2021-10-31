@@ -1,0 +1,151 @@
+{
+	"info": {
+		"_postman_id": "7380e20a-1e16-4e35-92e6-1a6f936110d7",
+		"name": "LtiCollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Lista todas as contas no banco",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/conta"
+			},
+			"response": []
+		},
+		{
+			"name": "Adiciona um nova Conta no Banco",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \r\n    \"idPessoa\" : 5,\r\n\t\"saldo\" : 177,\r\n\t\"tipoConta\" : 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/addConta",
+				"description": "Campos preenchidos por padrão {\r\n    limiteSaqueDiario = 1000;\r\n    flagAtivo = true;\r\n    dataCriacao = data atual do sistema;\r\n}"
+			},
+			"response": []
+		},
+		{
+			"name": "Realiza um saque numa determinada Conta",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"idConta\" : 2,\r\n\t\"valor\" :25\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/realizarSaque"
+			},
+			"response": []
+		},
+		{
+			"name": "Realiza um deposito em uma conta",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"idConta\" : 1,\r\n\t\"valor\" :85\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/realizarDeposito"
+			},
+			"response": []
+		},
+		{
+			"name": "Consulta o saldo de uma determinada conta (Passando o ID na URL))",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/saldo/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Extrato (Passando o id na URL)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/extrato/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Extrato por período (Veja os detalhes do body na Description)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "31/10/2021,02/11/2021"
+				},
+				"url": "http://localhost:8080/extratoPeriodo/1",
+				"description": "Passa uma string com a data de início e fim, separados por uma vírgula, no formato (dd/mm/aaaa)."
+			},
+			"response": []
+		},
+		{
+			"name": "Bloqueia a Conta cujo id é passado pelo path",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/bloqueia/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Lista todas as transações feitas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/transacao"
+			},
+			"response": []
+		},
+		{
+			"name": "Atualiza a conta cujo id é passado pelo path (Olhar o description)",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \r\n\t\"idPessoa\":7,\r\n    \"limiteSaqueDiario\":1500,\r\n    \"tipoConta\":3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/atualizarConta/1",
+				"description": "Somente esses três atributos podem ser modificados."
+			},
+			"response": []
+		},
+		{
+			"name": "Deleta uma conta do banco",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "http://localhost:8080/deletarConta/1"
+			},
+			"response": []
+		}
+	]
+}
